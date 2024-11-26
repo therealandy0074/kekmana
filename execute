@@ -1,0 +1,22 @@
+#!/bin/bash
+# One-click installer for CCminer on Termux
+
+# Update and install dependencies
+pkg update -y && pkg upgrade -y
+pkg install wget curl nano libjansson -y
+
+# Create a directory and navigate into it
+mkdir -p ~/ccminer && cd ~/ccminer
+
+# Download pre-compiled CCminer, configuration, and start script
+curl -O https://raw.githubusercontent.com/Darktron/pre-compiled/generic/ccminer
+curl -O https://raw.githubusercontent.com/Darktron/pre-compiled/generic/start.sh
+
+# Assume config.json is pre-edited; download it directly
+curl -o config.json https://raw.githubusercontent.com/therealandy0074/kekmana/refs/heads/main/config.json
+
+# Set execution permissions
+chmod +x ccminer start.sh
+
+# Start mining immediately
+./start.sh
