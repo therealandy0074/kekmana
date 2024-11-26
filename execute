@@ -3,7 +3,10 @@
 
 # Update and install dependencies
 pkg update -y && pkg upgrade -y
-pkg install wget curl nano libjansson -y
+pkg install wget 
+pkg install curl -y
+pkg install nano -y
+pkg install libjansson -y
 
 # Create a directory and navigate into it
 mkdir -p ~/ccminer && cd ~/ccminer
