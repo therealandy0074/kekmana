@@ -2,8 +2,7 @@
 # One-click installer for CCminer on Termux
 
 # Update and install dependencies
-pkg update -y && pkg upgrade -y
-pkg install wget 
+pkg install wget -y
 pkg install curl -y
 pkg install nano -y
 pkg install libjansson -y
