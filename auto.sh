@@ -1,5 +1,21 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
+#check for autoboot
+if [ "$(su -c '[ -f /etc/init/autoboot.rc ] && echo exists')" != "exists" ]; then
+  echo "Creating autoboot.rc file..."
+
+  # Switch to su mode
+  su -c '
+    cd /etc/init || exit 1
+    echo -e "oncharger\nsetprop sys.powerctl reboot" > autoboot.rc
+    chmod 644 autoboot.rc
+  '
+
+  echo "autoboot.rc created and permissions set."
+else
+  echo "autoboot.rc already exists. Skipping creation."
+fi
+
 # Update and install required packages
 echo "Updating and installing required packages..."
 pkg update && pkg upgrade -y
